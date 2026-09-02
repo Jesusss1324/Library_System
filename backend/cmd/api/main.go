@@ -1,31 +1,28 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"net/http"
-	"os"
+
+	"library-system/internal/config"
+	"library-system/internal/httpserver"
 )
 
 func main() {
-	port := os.Getenv("APP_PORT")
+	cfg := config.Load()
 
-	if port == "" {
-		port = "8081"
-	}
-
-	mux := http.NewServeMux()
-
-	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprintln(w, "Library System API")
-	})
+	router := httpserver.NewRouter()
 
 	server := &http.Server{
-		Addr:    ":" + port,
-		Handler: mux,
+		Addr:    ":" + cfg.AppPort,
+		Handler: router,
 	}
 
-	log.Printf("Server running on http://localhost:%s\n", port)
+	log.Printf(
+		"Server running in %s mode on http://localhost:%s",
+		cfg.AppEnv,
+		cfg.AppPort,
+	)
 
 	if err := server.ListenAndServe(); err != nil {
 		log.Fatal(err)
