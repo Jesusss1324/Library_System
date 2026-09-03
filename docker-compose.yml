@@ -17,4 +17,4 @@ services:
 
     working_dir: /app
 
-    command: go run ./cmd/api
+    command: air -c .air.toml

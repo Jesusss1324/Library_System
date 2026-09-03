@@ -1,15 +1,15 @@
 package httpserver
 
 import (
-	"fmt"
 	"net/http"
+
+	"library-system/internal/handler"
 )
 
 func NewRouter() http.Handler {
 	mux := http.NewServeMux()
 
-	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprintln(w, "Library System API")
-	})
-	return mux
+	mux.HandleFunc("GET /health", handler.Health)
+
+	return loggingMiddleware(mux)
 }
