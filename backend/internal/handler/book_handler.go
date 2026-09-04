@@ -3,13 +3,24 @@ package handler
 import (
 	"encoding/json"
 	"io"
-	"library-system/internal/model"
-	"library-system/internal/service"
 	"net/http"
 	"strings"
+
+	"library-system/internal/model"
+	"library-system/internal/service"
 )
 
-func CreateBook(w http.ResponseWriter, r *http.Request) {
+type BookHandler struct {
+	service *service.BookService
+}
+
+func NewBookHandler(service *service.BookService) *BookHandler {
+	return &BookHandler{
+		service: service,
+	}
+}
+
+func (h *BookHandler) CreateBook(w http.ResponseWriter, r *http.Request) {
 	var newBook model.Book
 
 	decoder := json.NewDecoder(r.Body)
@@ -48,13 +59,13 @@ func CreateBook(w http.ResponseWriter, r *http.Request) {
 	newBook.Title = strings.TrimSpace(newBook.Title)
 	newBook.Author = strings.TrimSpace(newBook.Author)
 
-	createdBook := service.CreateBook(newBook)
+	createdBook := h.service.CreateBook(newBook)
 
 	WriteJSON(w, http.StatusCreated, createdBook)
 }
 
-func GetBooks(w http.ResponseWriter, r *http.Request) {
-	books := service.GetBooks()
+func (h *BookHandler) GetBooks(w http.ResponseWriter, r *http.Request) {
+	books := h.service.GetBooks()
 
 	WriteJSON(w, http.StatusOK, books)
 }

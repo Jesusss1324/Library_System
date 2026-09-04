@@ -2,15 +2,24 @@ package service
 
 import "library-system/internal/model"
 
-var books = []model.Book{}
+type BookService struct {
+	books []model.Book
+}
 
-func CreateBook(book model.Book) model.Book {
-	book.ID = len(books) + 1
-	books = append(books, book)
+func NewBookService() *BookService {
+	return &BookService{
+		books: []model.Book{},
+	}
+}
+
+func (s *BookService) CreateBook(book model.Book) model.Book {
+	book.ID = len(s.books) + 1
+
+	s.books = append(s.books, book)
 
 	return book
 }
 
-func GetBooks() []model.Book {
-	return books
+func (s *BookService) GetBooks() []model.Book {
+	return s.books
 }
