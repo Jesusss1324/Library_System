@@ -13,5 +13,5 @@ func Health(w http.ResponseWriter, r *http.Request) {
 		Message: "Library System API is healthy",
 	}
 
-	writeJSON(w, http.StatusOK, response)
+	WriteJSON(w, http.StatusOK, response)
 }
