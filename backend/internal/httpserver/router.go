@@ -6,7 +6,7 @@ import (
 	"library-system/internal/handler"
 )
 
-func NewRouter() http.Handler {
+func NewRouter(bookHandler *handler.BookHandler) http.Handler {
 	mux := http.NewServeMux()
 
 	mux.HandleFunc("/health", handler.Health)
@@ -14,10 +14,10 @@ func NewRouter() http.Handler {
 	mux.HandleFunc("/api/books", func(w http.ResponseWriter, r *http.Request) {
 		switch r.Method {
 		case http.MethodGet:
-			handler.GetBooks(w, r)
+			bookHandler.GetBooks(w, r)
 
 		case http.MethodPost:
-			handler.CreateBook(w, r)
+			bookHandler.CreateBook(w, r)
 
 		default:
 			handler.WriteJSON(w, http.StatusMethodNotAllowed, map[string]string{

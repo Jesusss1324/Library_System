@@ -10,13 +10,18 @@ import (
 	"time"
 
 	"library-system/internal/config"
+	"library-system/internal/handler"
 	"library-system/internal/httpserver"
+	"library-system/internal/service"
 )
 
 func main() {
 	cfg := config.Load()
 
-	router := httpserver.NewRouter()
+	bookService := service.NewBookService()
+	bookHandler := handler.NewBookHandler(bookService)
+
+	router := httpserver.NewRouter(bookHandler)
 
 	server := &http.Server{
 		Addr:         ":" + cfg.AppPort,
