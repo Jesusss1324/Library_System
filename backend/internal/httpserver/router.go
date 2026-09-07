@@ -26,5 +26,7 @@ func NewRouter(bookHandler *handler.BookHandler) http.Handler {
 		}
 	})
 
-	return mux
+	return loggingMiddleware(
+		corsMiddleware(mux),
+	)
 }
