@@ -10,6 +10,7 @@ import (
 	"time"
 
 	"library-system/internal/config"
+	"library-system/internal/database"
 	"library-system/internal/handler"
 	"library-system/internal/httpserver"
 	"library-system/internal/service"
@@ -17,6 +18,20 @@ import (
 
 func main() {
 	cfg := config.Load()
+
+	db, err := database.Connect(database.Config{
+		Host:     cfg.DBHost,
+		Port:     cfg.DBPort,
+		User:     cfg.DBUser,
+		Password: cfg.DBPassword,
+		Name:     cfg.DBName,
+	})
+	if err != nil {
+		log.Fatalf("failed to connect to database: %v", err)
+	}
+	defer db.Close()
+
+	log.Println("Connected to SQL Server successfully")
 
 	bookService := service.NewBookService()
 	bookHandler := handler.NewBookHandler(bookService)
