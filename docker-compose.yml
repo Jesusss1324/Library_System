@@ -22,13 +22,20 @@ services:
   db:
     image: mcr.microsoft.com/mssql/server:2022-latest
     container_name: library-db
+
+    profiles:
+      - database
+
     environment:
       ACCEPT_EULA: "Y"
       MSSQL_SA_PASSWORD: "${DB_PASSWORD}"
+
     ports:
       - "1433:1433"
+
     volumes:
       - library_sqlserver_data:/var/opt/mssql
+
     restart: unless-stopped
 
 volumes:
