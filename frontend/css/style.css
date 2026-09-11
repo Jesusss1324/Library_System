@@ -1,5 +1,173 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #637fb6;
+    color: #1f2937;
+    line-height: 1.5;
+    /* background-image: url(../images/alejandria.png); */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 100vh;
+}
+
+
+/* NAVBAR */
+
+.navbar {
+    background: white;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.navbar-container {
+    max-width: 1100px;
+    margin: 0 auto;
+
+    height: 70px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 24px;
+}
+
+.logo {
+    font-size: 1.4rem;
+    font-weight: 700;
+    text-decoration: none;
+    color: #111827;
+}
+
+.nav-links {
+    display: flex;
+    gap: 28px;
+}
+
+.nav-links a {
+    color: #4b5563;
+    text-decoration: none;
+    font-size: 0.95rem;
+}
+
+.nav-links a:hover {
+    color: #111827;
+}
+
+
+/* PAGE */
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 48px 24px;
+}
+
+
+/* HERO */
+
+.hero {
+    margin-bottom: 40px;
+}
+
+
+
+.eyebrow {
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: #6b7280;
+    margin-bottom: 8px;
+}
+
+.hero h1 {
+    font-size: 2.4rem;
+    margin-bottom: 8px;
+}
+
+.hero-description {
+    color: #0055ff;
+    margin-bottom: 24px;
+}
+
+.search-container {
+    display: flex;
+    gap: 12px;
+    max-width: 600px;
+}
+
+.search-container input {
+    flex: 1;
+}
+
+
+/* CARDS */
+
+.card {
+    background: white;
+
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+
+    padding: 28px;
+
+    margin-bottom: 40px;
+}
+
+.section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 24px;
+}
+
+.section-heading h2 {
+    font-size: 1.25rem;
+    margin-bottom: 4px;
+}
+
+.section-heading p {
+    color: #6b7280;
+    font-size: 0.9rem;
+}
+
+
+/* FORM */
+
 .book-form {
-    background-color: blueviolet;
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        minmax(0, 1fr)
+        auto;
+
+    gap: 16px;
+
+    align-items: center;
+    border-radius: 8;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+label {
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+.book-form {
+    background-color: rgb(157, 104, 207);
 }
 
 .head{
@@ -7,3 +175,140 @@
     background-color: blue;
 }
 
+
+input {
+    width: 100%;
+
+    padding: 11px 12px;
+
+    border: 1px solid #d1d5db;
+    border-radius: 7px;
+
+    font-size: 0.95rem;
+
+    outline: none;
+}
+
+input:focus {
+    border-color: #374151;
+}
+
+
+/* BUTTONS */
+
+button {
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.primary-button {
+    border: none;
+    border-radius: 7px;
+
+    background: #111827;
+    color: white;
+
+    padding: 12px 20px;
+
+    font-weight: 600;
+}
+
+.primary-button:hover {
+    background: #374151;
+}
+
+.secondary-button {
+    background: white;
+
+    border: 1px solid #d1d5db;
+    border-radius: 7px;
+
+    padding: 10px 18px;
+
+    font-weight: 600;
+}
+
+.secondary-button:hover {
+    background: #f3f4f6;
+}
+
+.form-message {
+    margin-top: 16px;
+    font-size: 0.9rem;
+}
+
+
+/* BOOK TABLE */
+
+.books-section {
+    margin-top: 20px;
+}
+
+.table-container {
+    background: white;
+
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+
+    overflow: hidden;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead {
+    background: #f9fafb;
+}
+
+th,
+td {
+    text-align: left;
+
+    padding: 16px 20px;
+
+    border-bottom: 1px solid #e5e7eb;
+}
+
+th {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #6b7280;
+}
+
+td {
+    font-size: 0.95rem;
+}
+
+tbody tr:hover {
+    background: #f9fafb;
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 700px) {
+
+    .nav-links {
+        display: none;
+    }
+
+    .book-form {
+        grid-template-columns: 1fr;
+    }
+
+    .search-container {
+        flex-direction: column;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+}

@@ -10,55 +10,114 @@
 </head>
 
 <body>
+    <header class="navbar">
+        <div class="navbar-container">
+            <a href="#" class="logo">Alejandria</a>
 
-    <main id="head"> 0
-        <h1>Alejandria</h1>
-        <section>
-    <h2>Add Book</h2>
-
-    <form id="book-form">
-        <div>
-            <label for="title">Title:</label>
-            <input
-                type="text"
-                id="title"
-                name="title"
-                required
-            >
+            <nav class="nav-links">
+                <a href="#">Books</a>
+                <a href="#">My Loans</a>
+                <a href="#">Profile</a>
+            </nav>
         </div>
+    </header>
 
-        <div>
-            <label for="author">Author:</label>
-            <input
-                type="text"
-                id="author"
-                name="author"
-                required
-            >
-        </div>
+    <main class="container">
 
-        <button type="submit">Add Book</button>
-    </form>
+        <section class="hero">
+            <p class="eyebrow">Library System</p>
 
-    <p id="form-message"></p>
-</section>
+            <h1 "text-align: center;">Find your next book</h1>
 
-        <section>
-            <h2>Available Books</h2>
+            <p class="hero-description">
+                Browse the library collection and manage available books.
+            </p>
 
-            <table>
-                <thead>
-                    <tr>
-                        <th>Book<br>ID</th>
-                        <th>Book<br>Title</th>
-                        <th>Book<br>Author</th>
-                    </tr>
-                </thead>
+            <div class="search-container">
+                <input
+                    type="search"
+                    id="book-search"
+                    placeholder="Search by title or author"
+                >
 
-                <tbody id="books-list">
-                </tbody>
-            </table>
+                <button
+                    type="button"
+                    class="secondary-button"
+                    id="search-button"
+                >
+                    Search
+                </button>
+            </div>
         </section>
+
+        <section class="card">
+            <div class="section-heading">
+                <div>
+                    <h2>Add a new book</h2>
+                    <p>Add a title to the library collection.</p>
+                </div>
+            </div>
+
+            <form id="book-form" class="book-form">
+
+                <div class="form-group">
+                    <label for="title">Title</label>
+
+                    <input
+                        type="text"
+                        id="title"
+                        name="title"
+                        placeholder="Book title"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="author">Author</label>
+
+                    <input
+                        type="text"
+                        id="author"
+                        name="author"
+                        placeholder="Author name"
+                        required
+                    >
+                </div>
+
+                <button type="submit" class="primary-button">
+                    Add Book
+                </button>
+            </form>
+
+            <p id="form-message" class="form-message"></p>
+        </section>
+
+        <section class="books-section">
+
+            <div class="section-heading">
+                <div>
+                    <h2>Available Books</h2>
+                    <p>Books currently registered in the library.</p>
+                </div>
+            </div>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Title</th>
+                            <th>Author</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="books-list">
+                    </tbody>
+                </table>
+            </div>
+
+        </section>
+
     </main>
 
     <script src="./js/app.js"></script>
