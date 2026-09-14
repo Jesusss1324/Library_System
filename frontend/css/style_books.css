@@ -1,0 +1,218 @@
+/* =========================
+   BOOK CARDS
+   ========================= */
+
+.books-hero {
+    margin-bottom: 40px;
+}
+
+.books-hero h1 {
+    margin-bottom: 12px;
+
+    text-align: center;
+
+    font-size: 42px;
+    line-height: 1.2;
+}
+
+.books-search-container {
+    display: flex;
+
+    gap: 12px;
+
+    max-width: 700px;
+
+    margin: 30px auto 0;
+}
+
+.books-search-container input {
+    flex: 1;
+
+    padding: 14px 16px;
+
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+
+    background: white;
+
+    font-size: 16px;
+}
+
+.books-search-container input:focus {
+    outline: none;
+
+    border-color: #6b8fc9;
+}
+
+
+/* =========================
+   BOOK GRID
+   ========================= */
+
+.books-grid {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 24px;
+}
+
+
+/* =========================
+   BOOK CARD
+   ========================= */
+
+.book-card {
+    display: flex;
+
+    flex-direction: column;
+
+    overflow: hidden;
+
+    background: white;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 14px;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.book-card:hover {
+    transform: translateY(-4px);
+
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+
+/* =========================
+   BOOK COVER
+   ========================= */
+
+.book-cover {
+    height: 260px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: #f3f4f6;
+
+    border-bottom: 1px solid #e5e7eb;
+
+    color: #9ca3af;
+
+    font-size: 14px;
+}
+
+
+/* =========================
+   BOOK CARD CONTENT
+   ========================= */
+
+.book-card-content {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+
+    padding: 20px;
+}
+
+.book-card-content h3 {
+    font-size: 18px;
+
+    line-height: 1.3;
+
+    color: #1f2937;
+}
+
+.book-author {
+    color: #6b7280;
+
+    font-size: 14px;
+}
+
+
+/* =========================
+   BOOK STATUS
+   ========================= */
+
+.book-status {
+    width: fit-content;
+
+    padding: 5px 9px;
+
+    border-radius: 20px;
+
+    background: #ecfdf5;
+
+    color: #047857;
+
+    font-size: 12px;
+
+    font-weight: 600;
+}
+
+
+/* =========================
+   BORROW BUTTON
+   ========================= */
+
+.borrow-button {
+    width: 100%;
+
+    margin-top: 8px;
+}
+
+
+/* =========================
+   ACTIVE NAVIGATION
+   ========================= */
+
+.nav-links a.active {
+    color: #111827;
+
+    font-weight: 600;
+}
+
+
+/* =========================
+   RESPONSIVE BOOK GRID
+   ========================= */
+
+@media (max-width: 1000px) {
+
+    .books-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+}
+
+@media (max-width: 750px) {
+
+    .books-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media (max-width: 500px) {
+
+    .books-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .books-search-container {
+        flex-direction: column;
+    }
+
+    .books-hero h1 {
+        font-size: 32px;
+    }
+
+}

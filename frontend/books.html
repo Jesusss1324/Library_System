@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Books - Alejandria</title>
+
+    <link rel="stylesheet" href="./css/style_books.css">
+</head>
+
+<body>
+
+    <header class="navbar">
+
+        <div class="navbar-container">
+
+            <a href="./index.html" class="logo">
+                Alejandria
+            </a>
+
+            <nav class="nav-links">
+                <a href="./books.html" class="active">
+                    Books
+                </a>
+
+                <a href="#">
+                    My Loans
+                </a>
+
+                <a href="#">
+                    Profile
+                </a>
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <main class="container">
+
+        <section class="books-hero">
+
+            <p class="eyebrow">
+                Library Collection
+            </p>
+
+            <h1>
+                Browse the collection
+            </h1>
+
+            <p class="hero-description">
+                Find a book and see if it is available to borrow.
+            </p>
+
+
+            <div class="books-search-container">
+
+                <input
+                    type="search"
+                    id="book-search"
+                    placeholder="Search by title or author"
+                >
+
+                <button
+                    type="button"
+                    class="secondary-button"
+                    id="search-button"
+                >
+                    Search
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <section class="books-section">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <h2>
+                        All Books
+                    </h2>
+
+                    <p>
+                        Browse the books currently registered in Alejandria.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="books-grid"
+                class="books-grid"
+            >
+                <!-- Books will be loaded here by JavaScript -->
+            </div>
+
+
+            <p
+                id="books-message"
+                class="form-message"
+            ></p>
+
+        </section>
+
+    </main>
+
+
+    <script src="./js/book.js"></script>
+
+</body>
+
+</html>
