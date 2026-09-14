@@ -59,13 +59,25 @@ func (h *BookHandler) CreateBook(w http.ResponseWriter, r *http.Request) {
 	newBook.Title = strings.TrimSpace(newBook.Title)
 	newBook.Author = strings.TrimSpace(newBook.Author)
 
-	createdBook := h.service.CreateBook(newBook)
+	createdBook, err := h.service.CreateBook(newBook)
+	if err != nil {
+		WriteJSON(w, http.StatusInternalServerError, map[string]string{
+			"error": "Failed to create book",
+		})
+		return
+	}
 
 	WriteJSON(w, http.StatusCreated, createdBook)
 }
 
 func (h *BookHandler) GetBooks(w http.ResponseWriter, r *http.Request) {
-	books := h.service.GetBooks()
+	books, err := h.service.GetBooks()
+	if err != nil {
+		WriteJSON(w, http.StatusInternalServerError, map[string]string{
+			"error": "Failed to get books",
+		})
+		return
+	}
 
 	WriteJSON(w, http.StatusOK, books)
 }

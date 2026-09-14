@@ -2,24 +2,25 @@ package service
 
 import "library-system/internal/model"
 
-type BookService struct {
-	books []model.Book
+type BookRepository interface {
+	CreateBook(book model.Book) (model.Book, error)
+	GetBooks() ([]model.Book, error)
 }
 
-func NewBookService() *BookService {
+type BookService struct {
+	repository BookRepository
+}
+
+func NewBookService(repository BookRepository) *BookService {
 	return &BookService{
-		books: []model.Book{},
+		repository: repository,
 	}
 }
 
-func (s *BookService) CreateBook(book model.Book) model.Book {
-	book.ID = len(s.books) + 1
-
-	s.books = append(s.books, book)
-
-	return book
+func (s *BookService) CreateBook(book model.Book) (model.Book, error) {
+	return s.repository.CreateBook(book)
 }
 
-func (s *BookService) GetBooks() []model.Book {
-	return s.books
+func (s *BookService) GetBooks() ([]model.Book, error) {
+	return s.repository.GetBooks()
 }

@@ -13,27 +13,38 @@ import (
 	"library-system/internal/database"
 	"library-system/internal/handler"
 	"library-system/internal/httpserver"
+	"library-system/internal/repository"
 	"library-system/internal/service"
 )
 
 func main() {
 	cfg := config.Load()
 
-	db, err := database.Connect(database.Config{
-		Host:     cfg.DBHost,
-		Port:     cfg.DBPort,
-		User:     cfg.DBUser,
-		Password: cfg.DBPassword,
-		Name:     cfg.DBName,
-	})
-	if err != nil {
-		log.Fatalf("failed to connect to database: %v", err)
+	var bookRepository service.BookRepository
+
+	if cfg.DBPassword == "" {
+		log.Println("No database password configured. Using in-memory repository.")
+
+		bookRepository = repository.NewMemoryBookRepository()
+	} else {
+		db, err := database.Connect(database.Config{
+			Host:     cfg.DBHost,
+			Port:     cfg.DBPort,
+			User:     cfg.DBUser,
+			Password: cfg.DBPassword,
+			Name:     cfg.DBName,
+		})
+		if err != nil {
+			log.Fatalf("failed to connect to database: %v", err)
+		}
+		defer db.Close()
+
+		log.Println("Connected to SQL Server successfully")
+
+		bookRepository = repository.NewBookRepository(db)
 	}
-	defer db.Close()
 
-	log.Println("Connected to SQL Server successfully")
-
-	bookService := service.NewBookService()
+	bookService := service.NewBookService(bookRepository)
 	bookHandler := handler.NewBookHandler(bookService)
 
 	router := httpserver.NewRouter(bookHandler)
